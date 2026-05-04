@@ -1,234 +1,90 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
+import MainLayout from './components/layout/MainLayout';
+import ErrorBoundary from './components/common/ErrorBoundary';
+import GlobalLoading from './components/common/GlobalLoading';
 
+// Eagerly loaded core pages (for fast initial paint)
+import HomePage from './pages/HomePage';
 import GradeSelection from './pages/GradeSelection';
 import Curriculum from './pages/Curriculum';
-import MathWorksheet from './components/math/MathWorksheet';
-import AdditionWithCarry from './components/math/AdditionWithCarry';
-import Shop from './pages/Shop';
-import MainLayout from './components/layout/MainLayout';
-
-import FractionVisualizer from './components/math/FractionVisualizer';
-import FractionIsDivision from './components/math/grade4/FractionIsDivision';
-import MultiplicationVisualizer from './components/math/MultiplicationVisualizer';
-import AreaFormulaDeriver from './components/math/grade5/AreaFormulaDeriver';
-import GeometryExplorer from './components/math/GeometryExplorer';
-import GeometryMaster4 from './components/math/grade4/GeometryMaster4';
-import DivisionVisualizer from './components/math/DivisionVisualizer';
-import ClockVisualizer from './components/math/ClockVisualizer';
-import SubtractionWithBorrow from './components/math/SubtractionWithBorrow';
-import UnitConverter from './components/math/UnitConverter';
-import MathQuiz from './components/math/MathQuiz';
-import WorksheetGenerator from './components/math/WorksheetGenerator';
-import MyRoom from './pages/MyRoom';
-import ParentPage from './pages/ParentPage';
-import CircleExplorer from './components/math/CircleExplorer';
-import WeightVolumeConverter from './components/math/WeightVolumeConverter';
 import NotFound from './pages/NotFound';
 
-// 1학년 컴포넌트
-import NumberCounting from './components/math/grade1/NumberCounting';
-import ShapeExplorer1st from './components/math/grade1/ShapeExplorer1st';
-import SimpleArithmetic1st from './components/math/grade1/SimpleArithmetic1st';
-import NumberTo50 from './components/math/grade1/NumberTo50';
-import ClockBasic1st from './components/math/grade1/ClockBasic1st';
-import NumberTo100 from './components/math/grade1/NumberTo100';
-import Patterns1st from './components/math/grade1/Patterns1st';
-import Graph1st from './components/math/grade1/Graph1st';
-import Grade1Quiz from './components/math/Grade1Quiz';
-import WordProblemQuiz from './components/math/WordProblemQuiz';
-import WordProblemWorksheet from './components/math/WordProblemWorksheet';
+// Lazy loaded feature modules
+const MyRoom = lazy(() => import('./pages/MyRoom'));
+const Shop = lazy(() => import('./pages/Shop'));
+const ParentPage = lazy(() => import('./pages/ParentPage'));
+const MathGame = lazy(() => import('./pages/MathGame'));
 
-// 2학년 컴포넌트
-import ThreeDigitNumber from './components/math/grade2/ThreeDigitNumber';
-import Shapes2nd from './components/math/grade2/Shapes2nd';
-import TwoDigitArithmetic from './components/math/grade2/TwoDigitArithmetic';
-import LengthMeasure from './components/math/grade2/LengthMeasure';
-import FourDigitNumber from './components/math/grade2/FourDigitNumber';
-import MultiplicationTable from './components/math/grade2/MultiplicationTable';
-import TimeCalculation from './components/math/grade2/TimeCalculation';
-import Patterns2nd from './components/math/grade2/Patterns2nd';
-import Graph2nd from './components/math/grade2/Graph2nd';
-import Grade2Quiz from './components/math/Grade2Quiz';
+// Math Components (Lazy loaded by grade groups)
+import { Grade1Routes } from './routes/Grade1Routes';
+import { Grade2Routes } from './routes/Grade2Routes';
+import { Grade3Routes } from './routes/Grade3Routes';
+import { Grade4Routes } from './routes/Grade4Routes';
+import { Grade5Routes } from './routes/Grade5Routes';
+import { Grade6Routes } from './routes/Grade6Routes';
 
-// 4학년 컴포넌트
-import LargeNumbers4th from './components/math/grade4/LargeNumbers4th';
-import Angles4th from './components/math/grade4/Angles4th';
-import MultiDiv4th from './components/math/grade4/MultiDiv4th';
-import GeometryMove4th from './components/math/grade4/GeometryMove4th';
-import BarGraph4th from './components/math/grade4/BarGraph4th';
-import FindingRules4th from './components/math/grade4/FindingRules4th';
-import FractionArithmetic4th from './components/math/grade4/FractionArithmetic4th';
-import TriangleExplorer4th from './components/math/grade4/TriangleExplorer4th';
-import DecimalArithmetic4th from './components/math/grade4/DecimalArithmetic4th';
-import QuadrilateralExplorer4th from './components/math/grade4/QuadrilateralExplorer4th';
-import LineGraph4th from './components/math/grade4/LineGraph4th';
-import Grade4Quiz from './components/math/Grade4Quiz';
-import Polygons4th from './components/math/grade4/Polygons4th';
-
-// 5학년 컴포넌트
-import MixedArithmetic5th from './components/math/grade5/MixedArithmetic5th';
-import FactorsMultiples5th from './components/math/grade5/FactorsMultiples5th';
-import RulesResponse5th from './components/math/grade5/RulesResponse5th';
-import ReductionCommonDenom5th from './components/math/grade5/ReductionCommonDenom5th';
-import FractionArithmetic5th from './components/math/grade5/FractionArithmetic5th';
-import PerimeterArea5th from './components/math/grade5/PerimeterArea5th';
-import NumbersRange5th from './components/math/grade5/NumbersRange5th';
-import FractionMultiplication5th from './components/math/grade5/FractionMultiplication5th';
-import CongruenceSymmetry5th from './components/math/grade5/CongruenceSymmetry5th';
-import DecimalMultiplication5th from './components/math/grade5/DecimalMultiplication5th';
-import Cuboids5th from './components/math/grade5/Cuboids5th';
-import AveragePossibility5th from './components/math/grade5/AveragePossibility5th';
-import Grade5Quiz from './components/math/Grade5Quiz';
-
-// 6학년 컴포넌트
-import FractionDivision6th from './components/math/grade6/FractionDivision6th';
-import Geometry6th from './components/math/grade6/Geometry6th';
-import DecimalDivision6th from './components/math/grade6/DecimalDivision6th';
-import RatioProportion6th from './components/math/grade6/RatioProportion6th';
-import VolumeArea6th from './components/math/grade6/VolumeArea6th';
-import CircleArea6th from './components/math/grade6/CircleArea6th';
-import Graphs6th from './components/math/grade6/Graphs6th';
-import Proportion6th from './components/math/grade6/Proportion6th';
-import RoundGeometry6th from './components/math/grade6/RoundGeometry6th';
-import Grade6Quiz from './components/math/Grade6Quiz';
-import MathGame from './pages/MathGame';
-
-// 신규 추가 공통 및 고학년 도구
-import Geometry3DExplorer from './components/math/grade6/Geometry3DExplorer';
-import BlockBuilder3D from './components/math/grade6/BlockBuilder3D';
-import NumberCardGame from './components/math/common/NumberCardGame';
-import WordProblemDefenseGame from './components/math/common/WordProblemDefenseGame';
-import FractionDecimalVisualizer from './components/math/grade3/FractionDecimalVisualizer';
-import DivisionMultiLinker from './components/math/grade3/DivisionMultiLinker';
-import CompassSimulator from './components/math/grade3/CompassSimulator';
-import WordProblemArchitect from './components/math/grade3/WordProblemArchitect';
-import NumberDecomposer from './components/math/grade1/NumberDecomposer';
-import SubitizingGame from './components/math/grade1/SubitizingGame';
-import CommonDenomVisualizer from './components/math/grade5/CommonDenomVisualizer';
-import MultiplicationLinker from './components/math/grade2/MultiplicationLinker';
-import DivisionMeaning from './components/math/grade3/DivisionMeaning';
-import RatioBarModel from './components/math/grade6/RatioBarModel';
+// Common Math Tools (Lazy)
+const MathQuiz = lazy(() => import('./components/math/MathQuiz'));
+const WordProblemQuiz = lazy(() => import('./components/math/WordProblemQuiz'));
+const WordProblemWorksheet = lazy(() => import('./components/math/WordProblemWorksheet'));
+const WorksheetGenerator = lazy(() => import('./components/math/WorksheetGenerator'));
+const NumberCardGame = lazy(() => import('./components/math/common/NumberCardGame'));
+const WordProblemDefenseGame = lazy(() => import('./components/math/common/WordProblemDefenseGame'));
 
 function App() {
   return (
     <div className="App">
-      <MainLayout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/grade-selection" element={<GradeSelection />} />
-          <Route path="/selection" element={<GradeSelection />} />
-          <Route path="/grade/:gradeId" element={<Curriculum />} />
-          <Route path="/grade/3/arithmetic" element={<AdditionWithCarry />} />
-          <Route path="/grade/3/fraction" element={<FractionVisualizer />} />
-          <Route path="/grade/3/multiplication" element={<MultiplicationVisualizer />} />
-          <Route path="/grade/3/geometry" element={<GeometryExplorer />} />
-          <Route path="/grade/3/division" element={<DivisionVisualizer />} />
-          <Route path="/grade/3/clock" element={<ClockVisualizer />} />
-          <Route path="/grade/3/subtraction" element={<SubtractionWithBorrow />} />
-          <Route path="/grade/3/length" element={<UnitConverter />} />
-          <Route path="/grade/:gradeId/quiz" element={<MathQuiz />} />
-          <Route path="/grade/:gradeId/word-problem" element={<WordProblemQuiz />} />
-          <Route path="/grade/:gradeId/word-problem-worksheet" element={<WordProblemWorksheet />} />
-          <Route path="/grade/:gradeId/worksheet" element={<WorksheetGenerator />} />
-          <Route path="/grade/3/circle" element={<CircleExplorer />} />
-          <Route path="/grade/3/weight-volume" element={<WeightVolumeConverter />} />
-          <Route path="/grade/3/fraction-decimal" element={<FractionDecimalVisualizer />} />
-          <Route path="/grade/3/division-multi" element={<DivisionMultiLinker />} />
-          <Route path="/grade/3/compass" element={<CompassSimulator />} />
-          <Route path="/grade/3/architect" element={<WordProblemArchitect />} />
-          <Route path="/grade/3/division-meaning" element={<DivisionMeaning />} />
+      <ErrorBoundary>
+        <MainLayout>
+          <Suspense fallback={<GlobalLoading />}>
+            <Routes>
+              {/* Core Routes */}
+              <Route path="/" element={<HomePage />} />
+              <Route path="/grade-selection" element={<GradeSelection />} />
+              <Route path="/selection" element={<GradeSelection />} />
+              <Route path="/grade/:gradeId" element={<Curriculum />} />
+              
+              {/* Feature Routes */}
+              <Route path="/myroom" element={<MyRoom />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/parent" element={<ParentPage />} />
+              
+              {/* Math Content Routes (Grouped by Grade) */}
+              <Route path="/grade/1">
+                {Grade1Routes}
+              </Route>
+              <Route path="/grade/2">
+                {Grade2Routes}
+              </Route>
+              <Route path="/grade/3">
+                {Grade3Routes}
+              </Route>
+              <Route path="/grade/4">
+                {Grade4Routes}
+              </Route>
+              <Route path="/grade/5">
+                {Grade5Routes}
+              </Route>
+              <Route path="/grade/6">
+                {Grade6Routes}
+              </Route>
 
-          {/* 1학년 Routes */}
-          <Route path="/grade/1/number-counting" element={<NumberCounting />} />
-          <Route path="/grade/1/decomposer" element={<NumberDecomposer />} />
-          <Route path="/grade/1/subitizing" element={<SubitizingGame />} />
-          <Route path="/grade/1/shapes" element={<ShapeExplorer1st />} />
-          <Route path="/grade/1/arithmetic" element={<SimpleArithmetic1st />} />
-          <Route path="/grade/1/number-50" element={<NumberTo50 />} />
-          <Route path="/grade/1/clock" element={<ClockBasic1st />} />
-          <Route path="/grade/1/number-100" element={<NumberTo100 />} />
-          <Route path="/grade/1/patterns" element={<Patterns1st />} />
-          <Route path="/grade/1/graph" element={<Graph1st />} />
-          <Route path="/grade/1/quiz" element={<Grade1Quiz />} />
-
-          {/* 2학년 Routes */}
-          <Route path="/grade/2/three-digit" element={<ThreeDigitNumber />} />
-          <Route path="/grade/2/shapes" element={<Shapes2nd />} />
-          <Route path="/grade/2/arithmetic" element={<TwoDigitArithmetic />} />
-          <Route path="/grade/2/length" element={<LengthMeasure />} />
-          <Route path="/grade/2/four-digit" element={<FourDigitNumber />} />
-          <Route path="/grade/2/multiplication" element={<MultiplicationTable />} />
-          <Route path="/grade/2/multiplication-link" element={<MultiplicationLinker />} />
-          <Route path="/grade/2/time" element={<TimeCalculation />} />
-          <Route path="/grade/2/patterns" element={<Patterns2nd />} />
-          <Route path="/grade/2/graph" element={<Graph2nd />} />
-          <Route path="/grade/2/quiz" element={<Grade2Quiz />} />
-
-          {/* 4학년 Routes */}
-          <Route path="/grade/4/large-numbers" element={<LargeNumbers4th />} />
-          <Route path="/grade/4/angles" element={<Angles4th />} />
-          <Route path="/grade/4/arithmetic" element={<MultiDiv4th />} />
-          <Route path="/grade/4/geometry-move" element={<GeometryMaster4 />} />
-          <Route path="/grade/4/bar-graph" element={<BarGraph4th />} />
-          <Route path="/grade/4/rules" element={<FindingRules4th />} />
-          <Route path="/grade/4/fraction" element={<FractionArithmetic4th />} />
-          <Route path="/grade/4/fraction-division-link" element={<FractionIsDivision />} />
-          <Route path="/grade/4/triangle" element={<TriangleExplorer4th />} />
-          <Route path="/grade/4/decimal" element={<DecimalArithmetic4th />} />
-          <Route path="/grade/4/quadrilateral" element={<QuadrilateralExplorer4th />} />
-          <Route path="/grade/4/line-graph" element={<LineGraph4th />} />
-          <Route path="/grade/4/polygons" element={<Polygons4th />} />
-          <Route path="/grade/4/quiz" element={<Grade4Quiz />} />
-
-          {/* 5학년 Routes */}
-          <Route path="/grade/5/mixed-arithmetic" element={<MixedArithmetic5th />} />
-          <Route path="/grade/5/factors-multiples" element={<FactorsMultiples5th />} />
-          <Route path="/grade/5/rules" element={<RulesResponse5th />} />
-          <Route path="/grade/5/reduction" element={<ReductionCommonDenom5th />} />
-          <Route path="/grade/5/common-denominator" element={<CommonDenomVisualizer />} />
-          <Route path="/grade/5/fraction-arithmetic" element={<FractionArithmetic5th />} />
-          <Route path="/grade/5/area" element={<PerimeterArea5th />} />
-          <Route path="/grade/5/area-formula" element={<AreaFormulaDeriver />} />
-          <Route path="/grade/5/range" element={<NumbersRange5th />} />
-          <Route path="/grade/5/fraction-multiplication" element={<FractionMultiplication5th />} />
-          <Route path="/grade/5/congruence" element={<CongruenceSymmetry5th />} />
-          <Route path="/grade/5/decimal-multiplication" element={<DecimalMultiplication5th />} />
-          <Route path="/grade/5/cuboid" element={<Cuboids5th />} />
-          <Route path="/grade/5/average" element={<AveragePossibility5th />} />
-          <Route path="/grade/5/quiz" element={<Grade5Quiz />} />
-
-          {/* 6학년 Routes */}
-          <Route path="/grade/6/fraction-division" element={<FractionDivision6th />} />
-          <Route path="/grade/6/ratio-bar" element={<RatioBarModel />} />
-          <Route path="/grade/6/geometry" element={<Geometry6th />} />
-          <Route path="/grade/6/decimal-division" element={<DecimalDivision6th />} />
-          <Route path="/grade/6/ratio" element={<RatioProportion6th />} />
-          <Route path="/grade/6/graphs" element={<Graphs6th />} />
-          <Route path="/grade/6/volume" element={<VolumeArea6th />} />
-          <Route path="/grade/6/proportion" element={<Proportion6th />} />
-          <Route path="/grade/6/circle-area" element={<CircleArea6th />} />
-          <Route path="/grade/6/round-geometry" element={<RoundGeometry6th />} />
-          <Route path="/grade/6/quiz" element={<Grade6Quiz />} />
-          <Route path="/grade/6/block-builder" element={<BlockBuilder3D />} />
-          <Route path="/grade/6/geometry-3d" element={<Geometry3DExplorer />} />
-          <Route path="/grade/:gradeId/game" element={<MathGame />} />
-          
-          {/* 공통 심화/게임 모드 */}
-          <Route path="/grade/:gradeId/number-card" element={<NumberCardGame />} />
-          <Route path="/grade/:gradeId/defense-game" element={<WordProblemDefenseGame />} />
-
-           <Route path="/myroom" element={<MyRoom />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/parent" element={<ParentPage />} />
-          {/* Legacy or Direct routes can be redirected or kept for testing */}
-          <Route path="/arithmetic" element={<AdditionWithCarry />} />
-          
-          {/* 404 Catch-all Route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </MainLayout>
+              {/* Shared Math Tools */}
+              <Route path="/grade/:gradeId/quiz" element={<MathQuiz />} />
+              <Route path="/grade/:gradeId/word-problem" element={<WordProblemQuiz />} />
+              <Route path="/grade/:gradeId/word-problem-worksheet" element={<WordProblemWorksheet />} />
+              <Route path="/grade/:gradeId/worksheet" element={<WorksheetGenerator />} />
+              <Route path="/grade/:gradeId/game" element={<MathGame />} />
+              <Route path="/grade/:gradeId/number-card" element={<NumberCardGame />} />
+              <Route path="/grade/:gradeId/defense-game" element={<WordProblemDefenseGame />} />
+              
+              {/* 404 Catch-all */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </MainLayout>
+      </ErrorBoundary>
     </div>
   );
 }

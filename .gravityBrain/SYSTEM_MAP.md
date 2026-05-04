@@ -24,14 +24,18 @@ graph TD
     Src --> Pages["pages (Route Components)"]
     Src --> Utils["utils (Business Logic)"]
     
+    Src --> Routes["routes (Route Modules)"]
+    
     Components --> Math["math (Curriculum Tools)"]
     Components --> Common["common (UI Framework)"]
+    
+    Routes --> G1toG6["Grade1Routes ~ Grade6Routes"]
     
     Math --> Grade1["grade1 (Patterns, Graph, etc.)"]
     Math --> Grade2["grade2 (Patterns, Graph, etc.)"]
     Math --> Grade3["grade3 (Architect, etc.)"]
     
-    Pages --> HomePage["HomePage (Dynamic Dashboard)"]
+    Pages --> HomePage["HomePage (Personalized Dashboard)"]
     Pages --> MyRoom["MyRoom (Pet & Furniture)"]
     Pages --> Shop["Shop (Gamification Hub)"]
     Pages --> Parent["ParentPage (Analytics)"]
@@ -40,11 +44,13 @@ graph TD
 ```
 
 ### 1. `src/` (주요 로직)
-- `App.jsx`: 메인 라우팅 (Home, Selection, Curriculum, MyRoom, Shop, Parent 등)
-- `pages/HomePage.jsx`: 사용자 레벨, 뱃지, 랭킹 정보를 담은 대시보드형 메인
+- `App.jsx`: 메인 라우터 (React.lazy & Suspense 기반, ErrorBoundary 적용)
+- `routes/Grade1Routes.jsx ~ Grade6Routes.jsx`: 학년별 라우팅 모듈화
+- `pages/HomePage.jsx`: 펫 위젯, 학습 이어하기, 레벨, 뱃지를 담은 개인화 대시보드
 - `pages/MyRoom.jsx`: 가구 배치 시스템 및 펫 인터랙션 구현
 - `pages/ParentPage.jsx`: Recharts 기반의 학습 데이터 시각화 리포트
-- `utils/storage/storageManager.js`: XP, 코인, 인벤토리, 레이아웃 등 모든 상태의 영속성 관리 (URL Sync 포함)
+- `utils/storage/storageManager.js`: XP, 코인, lastLearned 등 모든 상태의 영속성 관리 (URL Sync 포함)
+- `hooks/useTrackProgress.js`: 페이지 방문 시 자동으로 마지막 학습 위치를 기록하는 훅
 - `components/math/grade1/Patterns1st.jsx`: 1학년 규칙 찾기 (ABAB, AAB, ABC 패턴)
 - `components/math/grade1/Graph1st.jsx`: 1학년 표와 그래프 (과일 세기 및 막대그래프)
 - `components/math/grade2/Patterns2nd.jsx`: 2학년 규칙 찾기 (수열 및 도형 회전)

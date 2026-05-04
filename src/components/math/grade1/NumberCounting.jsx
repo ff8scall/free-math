@@ -5,9 +5,11 @@ import confetti from 'canvas-confetti';
 import { updateCoins } from '../../../utils/storage/storageManager';
 import PageHeader from '../../common/PageHeader';
 import { JsonLd, generateCourseSchema } from '../../seo/JsonLd';
+import { useTrackProgress } from '../../../hooks/useTrackProgress';
 import styles from './NumberCounting.module.css';
 
 const NumberCounting = () => {
+    useTrackProgress('1학년: 9까지의 수 세기');
     const [mode, setMode] = useState('explore');
 
     // 탐험 모드 상태

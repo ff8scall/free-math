@@ -12,7 +12,8 @@ const initialData = {
     activeBuffs: {}, // { petId: expiryTimestamp }
     xp: 0,
     level: 1,
-    badges: [] // 수집한 뱃지 ID 목록
+    badges: [], // 수집한 뱃지 ID 목록
+    lastLearned: null // { path: string, title: string, timestamp: number }
 };
 
 import { getStateFromUrl, updateUrlWithState } from './urlSync';
@@ -168,4 +169,13 @@ export const getActiveMultiplier = () => {
     });
     // Base 1.0, each active pet gives +0.2 up to 2.0x max
     return Math.min(2.0, 1.0 + (activeBuffCount * 0.2));
+};
+
+export const updateLastLearned = (path, title) => {
+    const current = getStorageData();
+    const newData = {
+        ...current,
+        lastLearned: { path, title, timestamp: Date.now() }
+    };
+    setStorageData(newData);
 };
