@@ -135,79 +135,44 @@ const submitToIndexNow = async () => {
 
   const host = new URL(DOMAIN).hostname;
   console.log(`🚀 Host: ${host}`);
-  console.log(`🚀 Submitting ${urlList.length} URLs to IndexNow (Streaming Mode)...`);
+  console.log(`🚀 Submitting ${urlList.length} URLs to IndexNow (Batch Mode)...`);
 
-  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-  for (const config of INDEXNOW_CONFIG) {
+  const results = await Promise.all(INDEXNOW_CONFIG.map(async (config) => {
     const { endpoint, key } = config;
     const endpointHost = new URL(endpoint).hostname;
-    
-    console.log(`📡 Streaming to ${endpointHost}...`);
-    
-    // Optional: Verify key file accessibility once per endpoint
     const keyLocation = `${DOMAIN}/${key}.txt`;
+
+    const data = {
+      host: host,
+      key: key,
+      keyLocation: keyLocation,
+      urlList: urlList
+    };
+
     try {
-      const keyCheck = await fetch(keyLocation);
-      if (keyCheck.ok) {
-        console.log(`✅ Key file verified for ${endpointHost} at ${keyLocation}`);
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'User-Agent': 'Mozilla/5.0 (compatible; IndexNow/1.0; +https://www.indexnow.org/)'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        console.log(`✅ [${endpointHost}] Success: Submitted ${urlList.length} URLs`);
+        return { host: endpointHost, status: 'success' };
       } else {
-        console.warn(`⚠️ Warning: Key file for ${endpointHost} at ${keyLocation} returned status ${keyCheck.status}`);
+        console.warn(`⚠️ [${endpointHost}] Failed (Status ${response.status})`);
+        return { host: endpointHost, status: 'failed', code: response.status };
       }
-    } catch (e) {
-      console.warn(`⚠️ Warning: Could not verify key file for ${endpointHost}: ${e.message}`);
+    } catch (error) {
+      console.warn(`❌ [${endpointHost}] Error: ${error.message}`);
+      return { host: endpointHost, status: 'error', message: error.message };
     }
+  }));
 
-    let successCount = 0;
-    let failCount = 0;
-
-    for (let i = 0; i < urlList.length; i++) {
-      const url = urlList[i];
-      const data = {
-        host: host,
-        key: key,
-        keyLocation: keyLocation,
-        urlList: [url] // Single URL for Streaming mode
-      };
-
-      try {
-        // Use GET for single URL submission (Streaming Mode)
-        const params = new URLSearchParams({
-          url: url,
-          key: key,
-          keyLocation: keyLocation
-        });
-        const submissionUrl = `${endpoint}?${params.toString()}`;
-
-        const response = await fetch(submissionUrl, {
-          method: 'GET',
-          headers: {
-            'User-Agent': 'Mozilla/5.0 (compatible; IndexNow/1.0; +https://www.indexnow.org/)'
-          }
-        });
-
-        if (response.ok) {
-          successCount++;
-          if (i % 20 === 0 || i === urlList.length - 1) {
-            console.log(`  [${endpointHost}] Progress: ${i + 1}/${urlList.length} (${Math.round(((i + 1) / urlList.length) * 100)}%)`);
-          }
-        } else {
-          failCount++;
-          // console.error(`  ❌ Failed URL (${response.status}): ${url}`);
-        }
-      } catch (error) {
-        failCount++;
-        // console.error(`  ❌ Error submitting ${url}:`, error.message);
-      }
-
-      // Add small delay to prevent rate limiting (Streaming compliance)
-      if (i < urlList.length - 1) {
-        await delay(200); 
-      }
-    }
-
-    console.log(`📊 ${endpointHost} Summary: ${successCount} success, ${failCount} failed.`);
-  }
+  console.log('📊 IndexNow Submission Summary:', results);
 };
 
 // Execute IndexNow submission
