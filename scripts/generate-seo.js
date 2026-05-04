@@ -117,6 +117,9 @@ try {
 // 5. Submit to IndexNow (Bing, Naver, etc.)
 const submitToIndexNow = async () => {
   const sitemapPath = path.join(publicDir, 'sitemap.xml');
+  const cacheDir = path.join(__dirname, '../node_modules/.cache');
+  const cacheFile = path.join(cacheDir, 'indexnow-state.json');
+
   console.log(`🚀 Reading URLs from ${sitemapPath}...`);
 
   if (!fs.existsSync(sitemapPath)) {
@@ -124,19 +127,41 @@ const submitToIndexNow = async () => {
     return;
   }
 
-  const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
-  const urlMatches = sitemapContent.matchAll(/<loc>(https?:\/\/[^<]+)<\/loc>/g);
-  const urlList = Array.from(urlMatches).map(match => match[1]);
+  // 1. Load Previous State
+  let prevState = {};
+  if (fs.existsSync(cacheFile)) {
+    try {
+      prevState = JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
+      console.log('📦 Previous IndexNow state loaded from cache.');
+    } catch (e) {
+      console.warn('⚠️ Failed to load IndexNow cache, proceeding with full submission.');
+    }
+  }
 
-  if (urlList.length === 0) {
-    console.error('❌ No URLs found in sitemap.xml');
+  // 2. Identify Changed URLs
+  const currentState = {};
+  const changedUrls = [];
+
+  routes.forEach(route => {
+    const fullUrl = `${DOMAIN}${route.path}`;
+    const routeHash = JSON.stringify(route);
+    currentState[fullUrl] = routeHash;
+
+    if (prevState[fullUrl] !== routeHash) {
+      changedUrls.push(fullUrl);
+    }
+  });
+
+  if (changedUrls.length === 0) {
+    console.log('✅ No changes detected in SEO data. Skipping IndexNow submission.');
     return;
   }
 
-  const host = new URL(DOMAIN).hostname;
-  console.log(`🚀 Host: ${host}`);
-  console.log(`🚀 Submitting ${urlList.length} URLs to IndexNow (Batch Mode)...`);
+  console.log(`🚀 Host: ${new URL(DOMAIN).hostname}`);
+  console.log(`🚀 Submitting ${changedUrls.length}/${routes.length} changed URLs to IndexNow...`);
 
+  // 3. Submit to IndexNow (Batch Mode)
+  const host = new URL(DOMAIN).hostname;
   const results = await Promise.all(INDEXNOW_CONFIG.map(async (config) => {
     const { endpoint, key } = config;
     const endpointHost = new URL(endpoint).hostname;
@@ -146,7 +171,7 @@ const submitToIndexNow = async () => {
       host: host,
       key: key,
       keyLocation: keyLocation,
-      urlList: urlList
+      urlList: changedUrls
     };
 
     try {
@@ -160,7 +185,7 @@ const submitToIndexNow = async () => {
       });
 
       if (response.ok) {
-        console.log(`✅ [${endpointHost}] Success: Submitted ${urlList.length} URLs`);
+        console.log(`✅ [${endpointHost}] Success: Submitted ${changedUrls.length} URLs`);
         return { host: endpointHost, status: 'success' };
       } else {
         console.warn(`⚠️ [${endpointHost}] Failed (Status ${response.status})`);
@@ -171,6 +196,15 @@ const submitToIndexNow = async () => {
       return { host: endpointHost, status: 'error', message: error.message };
     }
   }));
+
+  // 4. Save Current State to Cache
+  try {
+    if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir, { recursive: true });
+    fs.writeFileSync(cacheFile, JSON.stringify(currentState, null, 2));
+    console.log('💾 Current SEO state saved to cache for next build.');
+  } catch (e) {
+    console.error('❌ Failed to save IndexNow cache:', e.message);
+  }
 
   console.log('📊 IndexNow Submission Summary:', results);
 };
