@@ -5,12 +5,59 @@
 }
 
 .noPrint {
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #fff5e6 0%, #fff9f0 100%);
     padding: 30px;
     border-radius: 20px;
     margin-bottom: 40px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(255, 204, 51, 0.2);
+    border: 2px solid #ffcc33;
+}
+
+/* 레벨 카드 - 화면용 */
+.levelCard {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 300px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.levelLabel {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.levelValue {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.xpBar {
+    background: rgba(255, 255, 255, 0.3);
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.xpProgress {
+    background: linear-gradient(90deg, #ffcc33 0%, #ffb347 100%);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.xpText {
+    font-size: 0.85rem;
+    font-weight: bold;
+    opacity: 0.95;
 }
 
 .backLink {
@@ -51,26 +98,27 @@
 /* Worksheet Styling - A4 Focus */
 .worksheet {
     background: white;
-    padding: 20mm;
+    padding: 15mm;
     /* Standard A4 margin */
     width: 210mm;
-    height: 297mm;
+    height: auto; /* 297mm에서 auto로 변경 - 내용에 따라 높이 조정 */
+    min-height: 297mm; /* 최소 높이는 A4 유지 */
     box-sizing: border-box;
     border: 1px solid #ddd;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     color: #000;
     font-family: 'Nanum Gothic', sans-serif;
     margin: 0 auto 50px auto;
-    overflow: hidden;
-    /* Prevent overflow to 2nd page */
+    overflow: visible;
     display: flex;
     flex-direction: column;
+    page-break-inside: avoid;
 }
 
 .wsHeader {
     border-bottom: 3px double #000;
-    padding-bottom: 15px;
-    margin-bottom: 30px;
+    padding-bottom: 10px; /* 15px에서 10px로 줄임 */
+    margin-bottom: 20px; /* 30px에서 20px로 줄임 */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -105,7 +153,7 @@
     flex-direction: column;
     justify-content: center;
     border-bottom: 1px dotted #eee;
-    padding: 10px 0;
+    padding: 8px 0; /* 10px에서 8px로 줄임 */
 }
 
 .problemItem:last-child {
@@ -115,9 +163,9 @@
 .problemTop {
     display: flex;
     gap: 10px;
-    font-size: 1.15rem;
-    line-height: 1.5;
-    margin-bottom: 10px;
+    font-size: 1.05rem; /* 1.15rem에서 1.05rem으로 줄임 */
+    line-height: 1.4; /* 1.5에서 1.4로 줄임 */
+    margin-bottom: 8px; /* 10px에서 8px로 줄임 */
 }
 
 .pNum {
@@ -134,7 +182,7 @@
     margin-left: 35px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px; /* 8px에서 5px로 줄임 */
 }
 
 .solutionLine,
@@ -144,12 +192,12 @@
 }
 
 .wsFooter {
-    margin-top: 20px;
+    margin-top: auto; /* flexbox로 하단에 고정 */
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #444;
     border-top: 1px solid #000;
-    padding-top: 15px;
+    padding-top: 10px;
     font-weight: bold;
 }
 
@@ -200,18 +248,20 @@
 
     /* Target the worksheet elements differently for printing */
     .worksheet {
-        position: relative; /* Relative for positioning footer/meta */
+        position: relative;
         display: flex !important;
         flex-direction: column !important;
         width: 210mm !important;
-        height: 297mm !important;
+        height: auto !important; /* 297mm에서 auto로 변경 */
+        min-height: 297mm !important; /* 최소 높이는 A4 유지 */
         margin: 0 !important;
-        padding: 20mm !important;
+        padding: 15mm !important;
         box-sizing: border-box;
         border: none !important;
         box-shadow: none !important;
         page-break-after: always;
-        overflow: hidden;
+        page-break-inside: avoid;
+        overflow: visible !important;
         background: white !important;
     }
 
@@ -225,20 +275,15 @@
         display: block !important;
     }
 
+    /* 화면용 요소 인쇄 시 숨기기 */
     .noPrint,
     :global(header),
     :global(nav),
     :global(footer),
     :global(.NavigationBar),
-    :global(.confetti-canvas) {
+    :global(.confetti-canvas),
+    .levelCard {
         display: none !important;
-    }
-
-    .wsFooter {
-        position: absolute;
-        bottom: 20mm;
-        left: 20mm;
-        right: 20mm;
-        border-top: 1px solid #000;
+        visibility: hidden !important;
     }
 }

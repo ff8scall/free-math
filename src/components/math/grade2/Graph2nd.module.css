@@ -1,0 +1,208 @@
+.container {
+  max-width: 950px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 32px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+  font-family: 'Outfit', sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #2d3436;
+  margin-bottom: 2.5rem;
+  font-weight: 800;
+}
+
+.title span {
+  color: #6c5ce7;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.dataCard {
+  background: #f8f9fd;
+  padding: 2rem;
+  border-radius: 24px;
+  border: 1px solid #edf2f7;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #4a5568;
+}
+
+.snackTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+.tableRow {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  transition: transform 0.2s;
+}
+
+.tableRow:hover {
+  transform: translateX(5px);
+}
+
+.tableRow td {
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.tableRow td:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  font-size: 1.5rem;
+}
+
+.tableRow td:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-weight: 800;
+  color: #6c5ce7;
+}
+
+.graphArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chartContainer {
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 20px 40px 40px;
+  border-left: 3px solid #e2e8f0;
+  border-bottom: 3px solid #e2e8f0;
+  position: relative;
+  background: linear-gradient(to top, #f8fafc 0%, transparent 100%);
+}
+
+.yAxisLabel {
+  position: absolute;
+  left: -40px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #a0aec0;
+}
+
+.interactiveBar {
+  width: 50px;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  position: relative;
+  transition: filter 0.3s;
+}
+
+.interactiveBar:hover {
+  filter: brightness(1.1);
+}
+
+.barValue {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  color: #4a5568;
+}
+
+.barLabel {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+}
+
+.quizSection {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f0f4ff;
+  border-radius: 24px;
+}
+
+.questionItem {
+  margin-bottom: 2rem;
+}
+
+.questionText {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.optionBtn {
+  padding: 1rem;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.optionBtn:hover {
+  border-color: #6c5ce7;
+  background: #f5f3ff;
+}
+
+.optionBtn.selected {
+  background: #6c5ce7;
+  color: white;
+  border-color: #6c5ce7;
+}
+
+.submitBtn {
+  display: block;
+  width: 100%;
+  padding: 1.2rem;
+  background: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(108, 92, 231, 0.3);
+}
+
+@media (max-width: 850px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}

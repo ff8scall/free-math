@@ -28,16 +28,19 @@ const Curriculum = () => {
                         { id: 'number-50', title: '50까지의 수', description: '10개씩 묶어서 50까지 세어요.', link: '/grade/1/number-50', status: 'available' },
                         { id: 'clock-basic', title: '시계 보기', description: '몇 시, 몇 시 30분을 읽어요.', link: '/grade/1/clock', status: 'available' },
                         { id: 'number-100', title: '100까지의 수', description: '100까지 수를 세고 쓰기를 해요.', link: '/grade/1/number-100', status: 'available' },
+                        { id: 'patterns-1st', title: '규칙 찾기', description: '반복되는 모양과 숫자의 규칙을 찾아요.', link: '/grade/1/patterns', status: 'available' },
+                        { id: 'graph-1st', title: '표와 그래프', description: '친구들이 좋아하는 것을 표로 정리해요.', link: '/grade/1/graph', status: 'available' },
                     ]
                 }
             ],
             tools: [
-                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 문제를 풀어보세요!', link: '/grade/1/quiz', status: 'available' },
-                { id: 'word-problem', title: '🧠 심화 문장제', description: '생각하며 푸는 문장형 수학 문제!', link: '/grade/1/word-problem', status: 'available' },
-                { id: 'word-print', title: '🖨️ 심화 학습지', description: '사고력을 키우는 심화 문장제를 종이로 출력해요.', link: '/grade/1/word-problem-worksheet', status: 'available' },
-                { id: 'defense', title: '🛡️ 문장제 방어 게임', description: '몬스터가 내는 문장제 문제를 논리적으로 파악해봐요!', link: '/grade/1/defense-game', status: 'available' },
-                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/1/game', status: 'available' },
-                { id: 'print', title: '🖨️ 학습지 출력', description: '집에서 종이로 직접 풀어보세요!', link: '/grade/1/worksheet', status: 'available' },
+                { id: 'quiz', title: '종합 퀴즈', description: '모든 문제 풀기', link: '/grade/1/quiz', status: 'available', category: 'practice' },
+                { id: 'word-problem', title: '문장제 풀기', description: '문제 읽고 풀기', link: '/grade/1/word-problem', status: 'available', category: 'practice' },
+                { id: 'defense', title: '방어 게임', description: '문장제 방어', link: '/grade/1/defense-game', status: 'available', category: 'practice' },
+                { id: 'number-card', title: '숫자 카드 추리', description: '수 만들기', link: '/grade/1/number-card', status: 'available', category: 'practice' },
+                { id: 'game', title: '수학 레이스', description: '스피드 게임', link: '/grade/1/game', status: 'available', category: 'practice' },
+                { id: 'word-print', title: '문장제 학습지', description: '심화 문제 출력', link: '/grade/1/word-problem-worksheet', status: 'available', category: 'print' },
+                { id: 'print', title: '연산 학습지', description: '계산 연습 출력', link: '/grade/1/worksheet', status: 'available', category: 'print' },
             ]
         },
         2: {
@@ -58,17 +61,19 @@ const Curriculum = () => {
                         { id: 'multiplication-link', title: '곱셈의 원리', description: '왜 곱셈을 배울까요?', link: '/grade/2/multiplication-link', status: 'available' },
                         { id: 'multiplication', title: '구구단', description: '구구단을 외우고 게임해요.', link: '/grade/2/multiplication', status: 'available' },
                         { id: 'time', title: '시각과 시간', description: '시간을 계산해요.', link: '/grade/2/time', status: 'available' },
+                        { id: 'patterns-2nd', title: '규칙 찾기', description: '반복되는 모양과 숫자의 규칙을 찾아요.', link: '/grade/2/patterns', status: 'available' },
+                        { id: 'graph-2nd', title: '표와 그래프', description: '친구들이 좋아하는 것을 표로 정리해요.', link: '/grade/2/graph', status: 'available' },
                     ]
                 }
             ],
             tools: [
-                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 문제를 풀어보세요!', link: '/grade/2/quiz', status: 'available' },
-                { id: 'word-problem', title: '🧠 심화 문장제', description: '상황을 이해하고 식으로 풀어봐요!', link: '/grade/2/word-problem', status: 'available' },
-                { id: 'word-print', title: '🖨️ 심화 학습지', description: '창의성과 사고력을 키우는 심화 문제를 종이로 풀어요.', link: '/grade/2/word-problem-worksheet', status: 'available' },
-                { id: 'defense', title: '🛡️ 문장제 방어 게임', description: '무작정 계산은 금물! 문장의 핵심을 파악하세요.', link: '/grade/2/defense-game', status: 'available' },
-                { id: 'number-card', title: '🃏 숫자 카드 추리', description: '주어진 카드로 조건에 맞는 가장 큰/작은 수 만들기!', link: '/grade/2/number-card', status: 'available' },
-                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/2/game', status: 'available' },
-                { id: 'print', title: '🖨️ 학습지 출력', description: '오늘 배운 내용을 종이로 풀어보세요!', link: '/grade/2/worksheet', status: 'available' },
+                { id: 'quiz', title: '종합 퀴즈', description: '모든 문제 풀기', link: '/grade/2/quiz', status: 'available', category: 'practice' },
+                { id: 'word-problem', title: '문장제 풀기', description: '문제 읽고 풀기', link: '/grade/2/word-problem', status: 'available', category: 'practice' },
+                { id: 'defense', title: '방어 게임', description: '문장제 방어', link: '/grade/2/defense-game', status: 'available', category: 'practice' },
+                { id: 'number-card', title: '숫자 카드 추리', description: '수 만들기', link: '/grade/2/number-card', status: 'available', category: 'practice' },
+                { id: 'game', title: '수학 레이스', description: '스피드 게임', link: '/grade/2/game', status: 'available', category: 'practice' },
+                { id: 'word-print', title: '문장제 학습지', description: '심화 문제 출력', link: '/grade/2/word-problem-worksheet', status: 'available', category: 'print' },
+                { id: 'print', title: '연산 학습지', description: '계산 연습 출력', link: '/grade/2/worksheet', status: 'available', category: 'print' },
             ]
         },
         3: {
@@ -103,13 +108,13 @@ const Curriculum = () => {
                 }
             ],
             tools: [
-                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '1학기+2학기 모든 단원 문제를 풀어보세요!', link: '/grade/3/quiz', status: 'available' },
-                { id: 'word-problem', title: '🧠 심화 문장제', description: '나눗셈, 분수, 시간 계산 등 어려운 문제 도전!', link: '/grade/3/word-problem', status: 'available' },
-                { id: 'word-print', title: '🖨️ 심화 학습지', description: '3학년 필수 심화 문장제를 출력해서 도전해봐요.', link: '/grade/3/word-problem-worksheet', status: 'available' },
-                { id: 'defense', title: '🛡️ 문장제 방어 게임', description: '논리적 사고로 문장제 몬스터를 물리치세요!', link: '/grade/3/defense-game', status: 'available' },
-                { id: 'number-card', title: '🃏 숫자 카드 추리', description: '여러 카드를 조합해 특정한 수를 유추해보세요.', link: '/grade/3/number-card', status: 'available' },
-                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/3/game', status: 'available' },
-                { id: 'worksheet', title: '📄 학습지 출력', description: '원하는 단원 문제를 PDF로 뽑아요.', link: '/grade/3/worksheet', status: 'available' },
+                { id: 'quiz', title: '종합 퀴즈', description: '모든 문제 풀기', link: '/grade/3/quiz', status: 'available', category: 'practice' },
+                { id: 'word-problem', title: '문장제 풀기', description: '문제 읽고 풀기', link: '/grade/3/word-problem', status: 'available', category: 'practice' },
+                { id: 'defense', title: '방어 게임', description: '문장제 방어', link: '/grade/3/defense-game', status: 'available', category: 'practice' },
+                { id: 'number-card', title: '숫자 카드 추리', description: '수 만들기', link: '/grade/3/number-card', status: 'available', category: 'practice' },
+                { id: 'game', title: '수학 레이스', description: '스피드 게임', link: '/grade/3/game', status: 'available', category: 'practice' },
+                { id: 'word-print', title: '문장제 학습지', description: '심화 문제 출력', link: '/grade/3/word-problem-worksheet', status: 'available', category: 'print' },
+                { id: 'print', title: '연산 학습지', description: '계산 연습 출력', link: '/grade/3/worksheet', status: 'available', category: 'print' },
             ]
         },
         4: {
@@ -139,13 +144,14 @@ const Curriculum = () => {
                 }
             ],
             tools: [
-                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '4학년 모든 문제를 풀어보세요!', link: '/grade/4/quiz', status: 'available' },
-                { id: 'word-problem', title: '🧠 심화 문장제', description: '논리와 사고력을 키우는 4학년 문장제 문제!', link: '/grade/4/word-problem', status: 'available' },
-                { id: 'word-print', title: '🖨️ 심화 학습지', description: '논리와 사고력을 키우는 4학년 심화 문제를 출력해요.', link: '/grade/4/word-problem-worksheet', status: 'available' },
-                { id: 'defense', title: '🛡️ 문장제 방어 게임', description: '문장제 문제의 숨은 의도를 찾아 몬스터를 처치해요.', link: '/grade/4/defense-game', status: 'available' },
-                { id: 'number-card', title: '🃏 숫자 카드 추리', description: '숫자 카드로 조건에 맞는 큰 수와 작은 수를 만들어요!', link: '/grade/4/number-card', status: 'available' },
-                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/4/game', status: 'available' },
-                { id: 'print', title: '🖨️ 학습지 출력', description: '단원평가 준비! 종이 학습지로 해봐요.', link: '/grade/4/worksheet', status: 'available' },
+                { id: 'quiz', title: '종합 퀴즈', description: '모든 문제 풀기', link: '/grade/4/quiz', status: 'available', category: 'practice' },
+                { id: 'word-problem', title: '문장제 풀기', description: '문제 읽고 풀기', link: '/grade/4/word-problem', status: 'available', category: 'practice' },
+                { id: 'defense', title: '방어 게임', description: '문장제 방어', link: '/grade/4/defense-game', status: 'available', category: 'practice' },
+                { id: 'number-card', title: '숫자 카드 추리', description: '수 만들기', link: '/grade/4/number-card', status: 'available', category: 'practice' },
+                { id: 'compass', title: '컴퍼스로 원 그리기', description: '정확한 원 그리기', link: '/grade/4/compass', status: 'available', category: 'practice' },
+                { id: 'game', title: '수학 레이스', description: '스피드 게임', link: '/grade/4/game', status: 'available', category: 'practice' },
+                { id: 'word-print', title: '문장제 학습지', description: '심화 문제 출력', link: '/grade/4/word-problem-worksheet', status: 'available', category: 'print' },
+                { id: 'print', title: '연산 학습지', description: '계산 연습 출력', link: '/grade/4/worksheet', status: 'available', category: 'print' },
             ]
         },
         5: {
@@ -176,12 +182,13 @@ const Curriculum = () => {
                 }
             ],
             tools: [
-                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '5학년 모든 문제를 풀어보세요!', link: '/grade/5/quiz', status: 'available' },
-                { id: 'word-problem', title: '🧠 심화 문장제', description: '복합 연산과 원리를 활용한 5학년 문장제!', link: '/grade/5/word-problem', status: 'available' },
-                { id: 'word-print', title: '🖨️ 심화 학습지', description: '5학년 복합 연산 심화 문제를 종이로 출력해요.', link: '/grade/5/word-problem-worksheet', status: 'available' },
-                { id: 'defense', title: '🛡️ 문장제 방어 게임', description: "복잡한 '어떤 수 구하기' 문제를 논리적으로 방어하세요!", link: '/grade/5/defense-game', status: 'available' },
-                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/5/game', status: 'available' },
-                { id: 'print', title: '🖨️ 학습지 출력', description: '5학년 실력을 종이로 확인해봐요!', link: '/grade/5/worksheet', status: 'available' },
+                { id: 'quiz', title: '종합 퀴즈', description: '모든 문제 풀기', link: '/grade/5/quiz', status: 'available', category: 'practice' },
+                { id: 'word-problem', title: '문장제 풀기', description: '문제 읽고 풀기', link: '/grade/5/word-problem', status: 'available', category: 'practice' },
+                { id: 'defense', title: '방어 게임', description: '문장제 방어', link: '/grade/5/defense-game', status: 'available', category: 'practice' },
+                { id: 'number-card', title: '숫자 카드 추리', description: '수 만들기', link: '/grade/5/number-card', status: 'available', category: 'practice' },
+                { id: 'game', title: '수학 레이스', description: '스피드 게임', link: '/grade/5/game', status: 'available', category: 'practice' },
+                { id: 'word-print', title: '문장제 학습지', description: '심화 문제 출력', link: '/grade/5/word-problem-worksheet', status: 'available', category: 'print' },
+                { id: 'print', title: '연산 학습지', description: '계산 연습 출력', link: '/grade/5/worksheet', status: 'available', category: 'print' },
             ]
         },
         6: {
@@ -208,18 +215,22 @@ const Curriculum = () => {
                 }
             ],
             tools: [
-                { id: 'quiz', title: '🏆 종합 퀴즈왕', description: '6학년 모든 문제를 풀어보세요!', link: '/grade/6/quiz', status: 'available' },
-                { id: 'word-problem', title: '🧠 심화 문장제', description: '6학년 사고력 쑥쑥 문장제 도전!', link: '/grade/6/word-problem', status: 'available' },
-                { id: 'word-print', title: '🖨️ 심화 학습지', description: '중학교 대비 6학년 사고력 심화 문제를 출력해요.', link: '/grade/6/word-problem-worksheet', status: 'available' },
-                { id: 'defense', title: '🛡️ 문장제 방어 게임', description: '비례식과 비율 문장제, 논리로 맞서 싸우세요!', link: '/grade/6/defense-game', status: 'available' },
-                { id: 'block', title: '🧱 쌓기나무 3D', description: '도형을 3D로 보고 위, 앞, 옆 투영도를 맞춰봐요!', link: '/grade/6/block-builder', status: 'available' },
-                { id: 'game', title: '🏁 수학 레이스', description: '60초 동안 달리는 스피드 수학 게임!', link: '/grade/6/game', status: 'available' },
-                { id: 'print', title: '🖨️ 학습지 출력', description: '중학교 가기 전, 종이로 최종 점검!', link: '/grade/6/worksheet', status: 'available' },
+                { id: 'quiz', title: '종합 퀴즈', description: '모든 문제 풀기', link: '/grade/6/quiz', status: 'available', category: 'practice' },
+                { id: 'word-problem', title: '문장제 풀기', description: '문제 읽고 풀기', link: '/grade/6/word-problem', status: 'available', category: 'practice' },
+                { id: 'defense', title: '방어 게임', description: '문장제 방어', link: '/grade/6/defense-game', status: 'available', category: 'practice' },
+                { id: 'block', title: '쌓기나무 3D', description: '도형 맞추기', link: '/grade/6/block-builder', status: 'available', category: 'practice' },
+                { id: 'game', title: '수학 레이스', description: '스피드 게임', link: '/grade/6/game', status: 'available', category: 'practice' },
+                { id: 'word-print', title: '문장제 학습지', description: '심화 문제 출력', link: '/grade/6/word-problem-worksheet', status: 'available', category: 'print' },
+                { id: 'print', title: '연산 학습지', description: '계산 연습 출력', link: '/grade/6/worksheet', status: 'available', category: 'print' },
             ]
         }
     };
 
-    const currentCurriculum = curriculumData[gradeId] || { smesters: [], tools: [] };
+    const currentCurriculum = curriculumData[gradeId] || { semesters: [], tools: [] };
+
+    // 도구를 카테고리별로 분리
+    const practiceTools = currentCurriculum.tools?.filter(t => t.category === 'practice') || [];
+    const printTools = currentCurriculum.tools?.filter(t => t.category === 'print') || [];
 
     return (
         <div className={styles.container}>
@@ -228,7 +239,7 @@ const Curriculum = () => {
             </div>
 
             <div className={styles.content}>
-                {/* Semesters */}
+                {/* 배우기 - 단원 */}
                 {currentCurriculum.semesters && currentCurriculum.semesters.map((sem, index) => (
                     <section key={index} className={styles.semesterSection}>
                         <h2 className={styles.semesterTitle}>{sem.semester}학기</h2>
@@ -253,12 +264,12 @@ const Curriculum = () => {
                     </section>
                 ))}
 
-                {/* Additional Tools */}
-                {currentCurriculum.tools && currentCurriculum.tools.length > 0 && (
+                {/* 연습하기 */}
+                {practiceTools.length > 0 && (
                     <section className={styles.semesterSection}>
-                        <h2 className={styles.semesterTitle}>📚 추가 학습 도구</h2>
+                        <h2 className={styles.semesterTitle}>🎮 연습하기</h2>
                         <div className={styles.topicGrid}>
-                            {currentCurriculum.tools.map((tool) => (
+                            {practiceTools.map((tool) => (
                                 <Link
                                     key={tool.id}
                                     to={tool.link}
@@ -267,6 +278,26 @@ const Curriculum = () => {
                                     <h3 className={styles.topicTitle}>{tool.title}</h3>
                                     <p className={styles.topicDesc}>{tool.description}</p>
                                     <span className={styles.playButton}>시작하기 ▶</span>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
+                {/* 종이로 풀기 */}
+                {printTools.length > 0 && (
+                    <section className={styles.semesterSection}>
+                        <h2 className={styles.semesterTitle}>�️ 종이로 풀기</h2>
+                        <div className={styles.topicGrid}>
+                            {printTools.map((tool) => (
+                                <Link
+                                    key={tool.id}
+                                    to={tool.link}
+                                    className={`${styles.topicCard} ${styles.toolCard}`}
+                                >
+                                    <h3 className={styles.topicTitle}>{tool.title}</h3>
+                                    <p className={styles.topicDesc}>{tool.description}</p>
+                                    <span className={styles.playButton}>출력하기 ▶</span>
                                 </Link>
                             ))}
                         </div>

@@ -1,23 +1,25 @@
 .container {
     text-align: center;
     padding: 40px 20px;
+    background: #FFFDF7;
+    min-height: 100vh;
 }
 
 .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--text-main);
+    color: #2F2F2F;
 }
 
 .subtitle {
-    font-size: 1.5rem;
-    color: var(--text-sub);
+    font-size: 1.2rem;
+    color: #666;
     margin-bottom: 3rem;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
     max-width: 800px;
     margin: 0 auto;
@@ -25,28 +27,48 @@
 
 .card {
     background-color: white;
-    border-radius: var(--radius-lg);
+    border-radius: 20px;
     padding: 2rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 3px solid transparent;
+    border: 2px solid transparent;
     position: relative;
+    cursor: pointer;
 }
 
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card:nth-child(1) { border-color: #FFB3BA; background: #FFF5F5; }
+.card:nth-child(2) { border-color: #FFDFBA; background: #FFFAF0; }
+.card:nth-child(3) { border-color: #FFFFBA; background: #FFFFF0; }
+.card:nth-child(4) { border-color: #BAFFC9; background: #F0FFF5; }
+.card:nth-child(5) { border-color: #BAE1FF; background: #F0F8FF; }
+.card:nth-child(6) { border-color: #E0BBE4; background: #F8F0FF; }
+
 .gradeNumber {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: #2F2F2F;
     font-family: var(--font-main);
 }
 
 .gradeText {
-    font-size: 1.5rem;
-    color: var(--text-sub);
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.gradeDesc {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 8px;
 }
 
 .active {

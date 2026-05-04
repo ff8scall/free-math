@@ -27,6 +27,10 @@ graph TD
     Components --> Math["math (Curriculum Tools)"]
     Components --> Common["common (UI Framework)"]
     
+    Math --> Grade1["grade1 (Patterns, Graph, etc.)"]
+    Math --> Grade2["grade2 (Patterns, Graph, etc.)"]
+    Math --> Grade3["grade3 (Architect, etc.)"]
+    
     Pages --> HomePage["HomePage (Dynamic Dashboard)"]
     Pages --> MyRoom["MyRoom (Pet & Furniture)"]
     Pages --> Shop["Shop (Gamification Hub)"]
@@ -41,9 +45,23 @@ graph TD
 - `pages/MyRoom.jsx`: 가구 배치 시스템 및 펫 인터랙션 구현
 - `pages/ParentPage.jsx`: Recharts 기반의 학습 데이터 시각화 리포트
 - `utils/storage/storageManager.js`: XP, 코인, 인벤토리, 레이아웃 등 모든 상태의 영속성 관리 (URL Sync 포함)
+- `components/math/grade1/Patterns1st.jsx`: 1학년 규칙 찾기 (ABAB, AAB, ABC 패턴)
+- `components/math/grade1/Graph1st.jsx`: 1학년 표와 그래프 (과일 세기 및 막대그래프)
+- `components/math/grade2/Patterns2nd.jsx`: 2학년 규칙 찾기 (수열 및 도형 회전)
+- `components/math/grade2/Graph2nd.jsx`: 2학년 표와 그래프 (데이터 해석 퀴즈 포함)
+- `utils/math/wordProblemGenerator.js`: 문장제 자동 생성 엔진 (3학년은 템플릿 기반, 그 외는 레거시 로직)
+- `utils/math/wordProblemEngine.js`: 템플릿 기반 문제 생성 엔진 (새로운 아키텍처)
+- `utils/math/problemUtils.js`: 문제 생성 공통 유틸리티 (rand, format, math, answer, text)
+- `data/wordProblems/grade3.js`: 3학년 문제 템플릿 메인 파일 (60개 템플릿 통합)
+- `data/wordProblems/grade3-addition-subtraction.js`: 3학년 덧셈/뺄셈 템플릿 (17개)
+- `data/wordProblems/grade3-multiplication-division.js`: 3학년 곱셈/나눗셈 템플릿 (14개)
+- `data/wordProblems/grade3-time-length-weight.js`: 3학년 시간/길이/무게 템플릿 (12개)
+- `data/wordProblems/grade3-fraction-shape.js`: 3학년 분수/도형 템플릿 (8개)
+- `data/wordProblems/grade3-logic-card.js`: 3학년 사고력/규칙/카드 템플릿 (8개)
+- `data/wordProblems/commonContexts.js`: 문제 생성용 공통 컨텍스트 (이름, 물건, 상황 등)
 
 ### 2. `scripts/` (자동화)
-- `generate-seo.js`: 빌드 시 `sitemap.xml`, `rss.xml`, `robots.txt`를 자동 생성하고 IndexNow에 제출함.
+- `generate-seo.js`: 빌드 시 `sitemap.xml`, `rss.xml`, `robots.txt`를 자동 생성하고 IndexNow에 Streaming 방식으로 제출함.
 - `google-indexing.js`: Google Indexing API를 통해 실시간 색인 요청을 보냄.
 - `update-seo-descriptions.js`: 대규모 SEO 메타데이터 업데이트 스크립트.
 

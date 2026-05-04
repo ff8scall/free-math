@@ -1,0 +1,581 @@
+{
+  "total": 92,
+  "passed": 92,
+  "failed": 0,
+  "templates": [
+    {
+      "id": "g1-addition-total",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g1-subtraction-remain",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g1-comparison",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g1-sequence",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g1-advanced-number-condition",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g1-advanced-order-logic",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g1-advanced-reverse-calc",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g1-advanced-comparison-logic",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g1-advanced-shape-logic",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g2-three-digit-sum",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g2-length-add",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g2-multiplication-basic",
+      "errors": [],
+      "warnings": [
+        "Equation result (25) doesn't match answer (10)"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g2-time-after",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g2-advanced-card-max-min",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g2-advanced-time-duration",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g2-advanced-reverse-multiply",
+      "errors": [],
+      "warnings": [
+        "Equation result (244) doesn't match answer (6)"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g2-advanced-length-overlap",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g4-angle-sum-puzzle",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g4-advanced-large-num-condition",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g4-advanced-fraction-add-sub-card",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g4-advanced-decimal-add-sub-puzzle",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g4-advanced-clock-hand-angle",
+      "errors": [],
+      "warnings": [
+        "Equation result (309) doesn't match answer (270)"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g4-advanced-polygon-angle-logic",
+      "errors": [],
+      "warnings": [
+        "Equation result (1803) doesn't match answer (540)"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g5-shape-area-logic",
+      "errors": [],
+      "warnings": [
+        "Could not validate equation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g5-mixed-calc-puzzle",
+      "errors": [],
+      "warnings": [
+        "Equation result (451) doesn't match answer (12)"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g5-advanced-lcm-gcd",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g5-advanced-fraction-add-sub-diff",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g5-advanced-average-inference",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g6-circle-area-combined",
+      "errors": [],
+      "warnings": [
+        "Equation result (11113.14) doesn't match answer (379.94)"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g6-ratio-word-problem",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g6-advanced-ratio-percent",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g6-ratio-distribution-logic",
+      "errors": [],
+      "warnings": [
+        "Equation result (3000.4) doesn't match answer (600)"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g6-surface-area-logic",
+      "errors": [],
+      "warnings": [
+        "Could not validate equation"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-addition-total-event-participants",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-addition-compare-increase",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-subtraction-remain-pages",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-subtraction-difference",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-reverse-add",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-reverse-sub",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-mistake-add-sub",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-multi-step-add-sub",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-place-value-add",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-number-card-max-min",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-card-digits-diff",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-addition-three-parts",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-subtraction-compare-more",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-addition-money",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-subtraction-money-change",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-addition-calendar-days",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-subtraction-calendar-days",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-multiply-equal-groups",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-multiply-array",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-division-share",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-division-measure",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-division-remainder",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-division-check",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-cut-rope",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-reverse-multiply",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-multiplication-puzzle",
+      "errors": [],
+      "warnings": [
+        "Equation result (211068) doesn't match answer (6)"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-division-container-needed",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-multiply-by-10-100",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-division-by-10-100",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-multiplication-word-problem",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-division-word-problem",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-time-after",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-time-before",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-time-duration",
+      "errors": [],
+      "warnings": [
+        "Equation result (129) doesn't match answer (89)"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-time-am-pm",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-length-add",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-length-subtract",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-length-unit-convert",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-length-overlap",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-weight-add",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-weight-unit-convert",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-weight-box",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-capacity-add",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-fraction-part",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-fraction-compare",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-fraction-sum-same-denom",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-fraction-sub-same-denom",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-polygon-perimeter",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-shape-count-vertices",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-shape-triangle-angles",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-shape-rectangle-area",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-custom-op",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-symbol-sum",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-torn-paper",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-max-expr",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-inequality-max",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-system-sub-add",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-number-condition",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    },
+    {
+      "id": "g3-approx-target-sum",
+      "errors": [],
+      "warnings": [],
+      "status": "PASS"
+    }
+  ]
+}

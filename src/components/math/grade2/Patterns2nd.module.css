@@ -1,0 +1,183 @@
+.container {
+  max-width: 850px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+  font-family: 'Outfit', sans-serif;
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #e17055, #fab1a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  text-align: center;
+  color: #636e72;
+  margin-bottom: 2.5rem;
+}
+
+.gameCard {
+  background: #fdfdfd;
+  border: 2px solid #f1f2f6;
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.modeBadge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: #ffeaa7;
+  color: #d63031;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.displayArea {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.numberItem {
+  width: 90px;
+  height: 90px;
+  background: white;
+  border: 3px solid #dfe6e9;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2d3436;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.shapeItem {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 50%;
+  border: 3px solid #dfe6e9;
+}
+
+.emptySlot {
+  border: 3px dashed #e17055;
+  background: #fffafa;
+  color: #e17055;
+}
+
+.inputSection {
+  text-align: center;
+}
+
+.inputField {
+  width: 120px;
+  padding: 1rem;
+  font-size: 1.8rem;
+  border: 3px solid #dfe6e9;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 700;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.inputField:focus {
+  border-color: #e17055;
+  box-shadow: 0 0 0 5px rgba(225, 112, 85, 0.1);
+}
+
+.checkBtn {
+  margin-left: 1rem;
+  padding: 1rem 2.5rem;
+  background: #e17055;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.checkBtn:hover {
+  background: #d35400;
+  transform: translateY(-2px);
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.optionCard {
+  background: white;
+  border: 2px solid #eee;
+  border-radius: 20px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.optionCard:hover {
+  border-color: #e17055;
+  transform: scale(1.05);
+}
+
+.feedbackArea {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: #b2bec3;
+  margin-bottom: 0.3rem;
+}
+
+.statValue {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d3436;
+}

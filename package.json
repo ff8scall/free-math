@@ -13,20 +13,22 @@
     "build": "node scripts/generate-seo.js && node scripts/google-indexing.js && vite build && node scripts/post-build.js",
     "lint": "eslint .",
     "index": "node scripts/generate-seo.js && node scripts/google-indexing.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate-word-problems": "node validate-word-problems.js"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.6.0",
+    "@react-three/fiber": "^9.6.1",
     "canvas-confetti": "^1.9.4",
     "framer-motion": "^12.30.0",
     "googleapis": "^171.4.0",
     "html2canvas": "^1.4.1",
     "lucide-react": "^0.563.0",
     "lz-string": "^1.5.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "react-helmet-async": "^2.0.5",
+    "react-is": "^19.2.5",
     "react-router-dom": "^7.13.0",
     "recharts": "^3.8.1",
     "three": "^0.184.0"

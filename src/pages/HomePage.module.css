@@ -145,6 +145,36 @@
     margin: 0;
 }
 
+.quickMenu {
+    background: white;
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.quickMenu h4 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.quickLink {
+    display: block;
+    padding: 12px 20px;
+    background: #f8f9fa;
+    color: #333;
+    text-decoration: none;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.quickLink:hover {
+    background: #FFD93D;
+    transform: translateX(5px);
+}
+
 .features {
   max-width: 1200px;
   margin: 0 auto;

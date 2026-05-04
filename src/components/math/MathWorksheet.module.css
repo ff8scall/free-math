@@ -1,16 +1,17 @@
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
 }
 
 .noPrint {
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #fff5e6 0%, #fff9f0 100%);
     padding: 30px;
     border-radius: 20px;
     margin-bottom: 40px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(255, 204, 51, 0.2);
+    border: 2px solid #ffcc33;
 }
 
 .back {
@@ -28,16 +29,89 @@
     margin-top: 20px;
 }
 
-/* Worksheet Styling (Print mode focus) */
+.configBox {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.difficultySelect {
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: 2px solid #ffcc33;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    background: white;
+    cursor: pointer;
+    outline: none;
+}
+
+/* 레벨 카드 - 화면용 */
+.levelCard {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 300px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.levelLabel {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.levelValue {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.xpBar {
+    background: rgba(255, 255, 255, 0.3);
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.xpProgress {
+    background: linear-gradient(90deg, #ffcc33 0%, #ffb347 100%);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.xpText {
+    font-size: 0.85rem;
+    font-weight: bold;
+    opacity: 0.95;
+}
+
+/* Worksheet Styling - A4 Focus */
 .worksheet {
     background: white;
-    padding: 50px;
-    min-height: 1000px;
+    padding: 15mm;
+    width: 210mm;
+    height: auto;
+    min-height: 297mm;
+    box-sizing: border-box;
     border: 1px solid #ddd;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     color: #000;
-    font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-    margin-bottom: 50px;
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 0 auto 50px auto;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    page-break-inside: avoid;
 }
 
 .wsHeader {
@@ -63,7 +137,7 @@
 .problemGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px 60px;
+    gap: 30px 40px; /* 40px 60px에서 30px 40px로 줄임 */
 }
 
 .pItem {
@@ -71,9 +145,9 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    min-height: 80px;
-    border-bottom: 1px dotted #ccc;
-    padding-bottom: 10px;
+    min-height: 60px; /* 80px에서 60px로 줄임 */
+    border-bottom: 1px dotted #eee;
+    padding-bottom: 15px; /* 10px에서 15px로 늘림 */
 }
 
 .pNum {
@@ -85,12 +159,13 @@
 }
 
 .wsFooter {
-    margin-top: 100px;
+    margin-top: auto;
     text-align: center;
     font-size: 0.9rem;
-    color: #888;
-    border-top: 1px solid #eee;
+    color: #444;
+    border-top: 1px solid #000;
     padding-top: 10px;
+    font-weight: bold;
 }
 
 .answerKey {
@@ -112,30 +187,67 @@
 
 /* PRINT MEDIA QUERY */
 @media print {
-    .noPrint {
-        display: none !important;
+    @page {
+        size: A4 portrait;
+        margin: 0;
     }
 
     body {
-        background: white;
         margin: 0;
         padding: 0;
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 
-    .container {
-        max-width: 100% !important;
-        padding: 0 !important;
+    /* Hide EVERYTHING by default */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Show the main worksheet and its children */
+    .worksheet,
+    .worksheet * {
+        visibility: visible;
     }
 
     .worksheet {
+        position: relative;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 210mm !important;
+        height: auto !important;
+        min-height: 297mm !important;
+        margin: 0 !important;
+        padding: 15mm !important;
+        box-sizing: border-box;
         border: none !important;
         box-shadow: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
+        page-break-after: always;
+        page-break-inside: avoid;
+        overflow: visible !important;
+        background: white !important;
     }
 
-    .worksheet+.worksheet {
-        page-break-before: always;
+    .container,
+    :global(#root),
+    :global(main) {
+        padding: 0 !important;
+        margin: 0 !important;
+        background: white !important;
+        min-height: auto !important;
+        display: block !important;
+    }
+
+    /* 화면용 요소 인쇄 시 숨기기 */
+    .noPrint,
+    :global(header),
+    :global(nav),
+    :global(footer),
+    :global(.NavigationBar),
+    :global(.confetti-canvas),
+    .levelCard {
+        display: none !important;
+        visibility: hidden !important;
     }
 }

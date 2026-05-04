@@ -7,13 +7,22 @@ const GradeSelection = () => {
     const navigate = useNavigate();
     const grades = [1, 2, 3, 4, 5, 6];
 
+    const gradeDescriptions = {
+        1: '수와 덧셈 시작!',
+        2: '세 자리 수와 구구단',
+        3: '분수와 나눗셈',
+        4: '큰 수와 각도',
+        5: '약수와 분수',
+        6: '비와 비율'
+    };
+
     const handleGradeClick = (grade) => {
         navigate(`/grade/${grade}`);
     };
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>매쓰 펫토리 초등 수학 여행! 몇 학년인가요? 🎒</h1>
+            <h1 className={styles.title}>몇 학년 수학을 공부할까요? 🎒</h1>
             <p className={styles.subtitle}>자신의 학년을 선택하고 수학 여행을 떠나요!</p>
 
             <div className={styles.grid}>
@@ -25,6 +34,7 @@ const GradeSelection = () => {
                     >
                         <span className={styles.gradeNumber}>{grade}</span>
                         <span className={styles.gradeText}>학년</span>
+                        <span className={styles.gradeDesc}>{gradeDescriptions[grade]}</span>
                     </button>
                 ))}
             </div>

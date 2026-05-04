@@ -34,6 +34,8 @@ import SimpleArithmetic1st from './components/math/grade1/SimpleArithmetic1st';
 import NumberTo50 from './components/math/grade1/NumberTo50';
 import ClockBasic1st from './components/math/grade1/ClockBasic1st';
 import NumberTo100 from './components/math/grade1/NumberTo100';
+import Patterns1st from './components/math/grade1/Patterns1st';
+import Graph1st from './components/math/grade1/Graph1st';
 import Grade1Quiz from './components/math/Grade1Quiz';
 import WordProblemQuiz from './components/math/WordProblemQuiz';
 import WordProblemWorksheet from './components/math/WordProblemWorksheet';
@@ -46,6 +48,8 @@ import LengthMeasure from './components/math/grade2/LengthMeasure';
 import FourDigitNumber from './components/math/grade2/FourDigitNumber';
 import MultiplicationTable from './components/math/grade2/MultiplicationTable';
 import TimeCalculation from './components/math/grade2/TimeCalculation';
+import Patterns2nd from './components/math/grade2/Patterns2nd';
+import Graph2nd from './components/math/grade2/Graph2nd';
 import Grade2Quiz from './components/math/Grade2Quiz';
 
 // 4학년 컴포넌트
@@ -113,6 +117,7 @@ function App() {
       <MainLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/grade-selection" element={<GradeSelection />} />
           <Route path="/selection" element={<GradeSelection />} />
           <Route path="/grade/:gradeId" element={<Curriculum />} />
           <Route path="/grade/3/arithmetic" element={<AdditionWithCarry />} />
@@ -144,6 +149,8 @@ function App() {
           <Route path="/grade/1/number-50" element={<NumberTo50 />} />
           <Route path="/grade/1/clock" element={<ClockBasic1st />} />
           <Route path="/grade/1/number-100" element={<NumberTo100 />} />
+          <Route path="/grade/1/patterns" element={<Patterns1st />} />
+          <Route path="/grade/1/graph" element={<Graph1st />} />
           <Route path="/grade/1/quiz" element={<Grade1Quiz />} />
 
           {/* 2학년 Routes */}
@@ -155,6 +162,8 @@ function App() {
           <Route path="/grade/2/multiplication" element={<MultiplicationTable />} />
           <Route path="/grade/2/multiplication-link" element={<MultiplicationLinker />} />
           <Route path="/grade/2/time" element={<TimeCalculation />} />
+          <Route path="/grade/2/patterns" element={<Patterns2nd />} />
+          <Route path="/grade/2/graph" element={<Graph2nd />} />
           <Route path="/grade/2/quiz" element={<Grade2Quiz />} />
 
           {/* 4학년 Routes */}
