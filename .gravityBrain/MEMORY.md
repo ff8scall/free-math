@@ -6,6 +6,10 @@
     - 60개 템플릿 구현 (덧셈/뺄셈 17, 곱셈/나눗셈 14, 시간/길이/무게 12, 분수/도형 8, 사고력/규칙/카드 8)
     - 자동 검증 스크립트 구현 (`validate-word-problems.js`) - 59개 템플릿 100% 통과
     - 기존 컴포넌트 호환성 유지 (WordProblemQuiz, WordProblemWorksheet)
+- **[2026-05-04]** **SEO 지능형 제출(Change Detection) 도입**:
+    - 모든 URL 대신 변경된 URL만 IndexNow에 제출하도록 리팩터링.
+    - 빌드 속도 개선을 위한 Batch Mode(일괄 제출) 전환.
+    - `node_modules/.cache`를 활용한 빌드 간 상태 추적 구현.
 - **[2026-05-04]** **Vercel 빌드 에러 해결**:
     - React 19와 `@react-three/drei` 간의 peer dependency 충돌 해결.
     - `.npmrc`에 `legacy-peer-deps=true` 추가하여 빌드 안정성 확보.
