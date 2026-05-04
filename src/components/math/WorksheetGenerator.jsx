@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from '../common/Button';
 import PageHeader from '../common/PageHeader';
+import ParentAdBanner from '../common/ParentAdBanner';
 import styles from './WorksheetGenerator.module.css';
 import { generateProblemData } from '../../utils/math/wordProblemGenerator';
 
@@ -116,6 +117,9 @@ const WorksheetGenerator = () => {
                     <Button onClick={generateWorksheet} variant="secondary">새로운 문제 만들기</Button>
                     <Button onClick={handlePrint}>인쇄 / PDF 저장</Button>
                 </div>
+                
+                {/* 광고 배너 (출력 영역 밖) */}
+                <ParentAdBanner />
             </div>
 
             {/* Printable Area (A4 Preview) */}

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Button from '../common/Button';
 import PageHeader from '../common/PageHeader';
+import ParentAdBanner from '../common/ParentAdBanner';
 import styles from './WordProblemWorksheet.module.css';
 import { generateProblemData } from '../../utils/math/wordProblemGenerator';
 import { getStorageData } from '../../utils/storage/storageManager';
@@ -104,6 +105,9 @@ return (
                     <Button onClick={generateWorksheet} variant="secondary">문제 새로 만들기 🔄</Button>
                     <Button onClick={handlePrint} variant="primary">출력 / PDF 저장 🖨️</Button>
                 </div>
+                
+                {/* 광고 배너 (학부모 타겟, 프린트 시 제외됨) */}
+                <ParentAdBanner />
             </div>
 
             {/* 문제 페이지들 */}

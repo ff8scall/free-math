@@ -13,7 +13,14 @@ const initialData = {
     xp: 0,
     level: 1,
     badges: [], // 수집한 뱃지 ID 목록
-    lastLearned: null // { path: string, title: string, timestamp: number }
+    lastLearned: null, // { path: string, title: string, timestamp: number }
+    streak: 0,
+    lastLoginDate: null,
+    dailyQuests: {
+        attendance: false,
+        study: false,
+        feedPet: false
+    }
 };
 
 import { getStateFromUrl, updateUrlWithState } from './urlSync';
@@ -155,6 +162,10 @@ export const feedPet = (petId) => {
         activeBuffs: newBuffs
     };
     setStorageData(newData);
+    
+    // 펫 먹이주기 일일 퀘스트 달성 트리거
+    completeDailyQuest('feedPet');
+    
     return true;
 };
 
@@ -178,4 +189,77 @@ export const updateLastLearned = (path, title) => {
         lastLearned: { path, title, timestamp: Date.now() }
     };
     setStorageData(newData);
+    
+    // 학습하기 일일 퀘스트 달성 트리거
+    completeDailyQuest('study');
+};
+
+// --- Daily Quests & Retention Logic ---
+
+const getTodayString = () => new Date().toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' });
+
+export const checkDailyReset = () => {
+    const current = getStorageData();
+    const today = getTodayString();
+
+    if (current.lastLoginDate !== today) {
+        // 어제 접속했는지 확인하여 Streak 유지 또는 초기화
+        let newStreak = current.streak || 0;
+        if (current.lastLoginDate) {
+            const lastDate = new Date(current.lastLoginDate.replace(/\. /g, '-').replace('.', ''));
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            
+            // 단순 일자 비교 (날짜 차이가 1일 이하인지)
+            const diffTime = Math.abs(new Date(today.replace(/\. /g, '-').replace('.', '')) - lastDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+            
+            if (diffDays === 1) {
+                newStreak += 1;
+            } else {
+                newStreak = 1; // 오늘이 1일차
+            }
+        } else {
+            newStreak = 1;
+        }
+
+        const newData = {
+            ...current,
+            lastLoginDate: today,
+            streak: newStreak,
+            dailyQuests: {
+                attendance: false,
+                study: false,
+                feedPet: false
+            }
+        };
+        setStorageData(newData);
+        return true; // Reset occurred
+    }
+    return false;
+};
+
+export const completeDailyQuest = (questId) => {
+    const current = getStorageData();
+    
+    // 이미 완료했으면 무시
+    if (current.dailyQuests && current.dailyQuests[questId]) return false;
+
+    // 만약 dailyQuests 객체가 없으면 초기화
+    const quests = current.dailyQuests || { attendance: false, study: false, feedPet: false };
+    const newDailyQuests = { ...quests, [questId]: true };
+    const newData = { ...current, dailyQuests: newDailyQuests };
+    
+    setStorageData(newData);
+    
+    // 보상 지급 로직
+    if (questId === 'attendance') {
+        updateCoins(10); // 출석 10코인
+    } else if (questId === 'study') {
+        updateCoins(20); // 학습 20코인
+    } else if (questId === 'feedPet') {
+        updateCoins(15); // 밥주기 15코인
+    }
+    
+    return true;
 };

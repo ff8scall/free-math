@@ -1,0 +1,114 @@
+.container {
+    background: white;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    margin-bottom: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.title {
+    margin: 0;
+    color: #343a40;
+    font-size: 1.1rem;
+}
+
+.streakBadge {
+    background: #ffec99;
+    color: #e67700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.questList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.questItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+}
+
+.questItem.done {
+    background: #f1f3f5;
+    opacity: 0.7;
+}
+
+.questItem.done .label {
+    text-decoration: line-through;
+    color: #868e96;
+}
+
+.questInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    font-size: 1.2rem;
+}
+
+.label {
+    font-size: 0.95rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.rewardBox {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #e7f5ff;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.rewardText {
+    color: #1c7ed6;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.coinIcon {
+    font-size: 0.9rem;
+}
+
+.claimButton {
+    background: #4dabf7;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.claimButton:hover {
+    background: #339af0;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-5px);}
+    60% {transform: translateY(-3px);}
+}

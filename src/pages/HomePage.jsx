@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { getStorageData } from '../utils/storage/storageManager';
+import { getStorageData, checkDailyReset } from '../utils/storage/storageManager';
 import BadgeInventory from '../components/common/BadgeInventory';
 import RankingBoard from '../components/common/RankingBoard';
 import PetWidget from '../components/common/PetWidget';
+import DailyQuestWidget from '../components/common/DailyQuestWidget';
 import { JsonLd } from '../components/seo/JsonLd';
 import styles from './HomePage.module.css';
 
@@ -11,6 +12,12 @@ const HomePage = () => {
     const [data, setData] = useState(getStorageData());
 
     useEffect(() => {
+        // 앱 진입 시(홈페이지 마운트 시) 일일 초기화 로직 체크
+        const resetOccurred = checkDailyReset();
+        if (resetOccurred) {
+            setData(getStorageData());
+        }
+
         const handleUpdate = () => setData(getStorageData());
         window.addEventListener('storage-update', handleUpdate);
         return () => window.removeEventListener('storage-update', handleUpdate);
@@ -100,8 +107,10 @@ const HomePage = () => {
                     </div>
                 </section>
                 
-                {/* 사이드 컬럼: 빠른 메뉴 및 학부모 도구 */}
+                {/* 사이드 컬럼: 일일 퀘스트, 빠른 메뉴 및 학부모 도구 */}
                 <aside className={styles.sideSection}>
+                    <DailyQuestWidget />
+                    
                     <div className={styles.menuCard}>
                         <h4>나의 공간 🏠</h4>
                         <div className={styles.linkList}>
