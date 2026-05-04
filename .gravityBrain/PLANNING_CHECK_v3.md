@@ -1,10 +1,10 @@
 # 📋 PLANNING CHECK (기획 체크리스트)
 
-## 📌 [Phase 1] 리텐션 및 1차 수익화 검증 (진행 중)
-- [ ] **일일 퀘스트(Daily Quests) 로직 구현**: `storageManager.js`에 마지막 로그인 시간(`lastLoginDate`) 체크 및 퀘스트 상태 초기화 로직 추가.
-- [ ] **출석체크 UI 추가**: `HomePage.jsx` 또는 `MyRoom.jsx` 접속 시 "오늘의 출석 도장" 및 보상 지급 팝업 띄우기.
-- [ ] **학부모 화면 배너 공간 확보**: `/parent` (학습 리포트) 및 학습지 출력 페이지 하단에 Google AdSense 등 교육용 배너가 들어갈 정적 UI 공간 설계.
-- [ ] **어뷰징 방지**: 브라우저 시간(Date.now)을 인위적으로 조작하여 일일 퀘스트를 무한 반복하는 행위를 방지하기 위한 최소한의 방어 코드 (예: 과거 시간으로 돌아가면 무시).
+## 📌 [Phase 1] 리텐션 및 1차 수익화 검증 (완료)
+- [x] **일일 퀘스트(Daily Quests) 로직 구현**: `storageManager.js`에 마지막 로그인 시간(`lastLoginDate`) 체크 및 퀘스트 상태 초기화 로직 추가.
+- [x] **출석체크 UI 추가**: `HomePage.jsx`에 `DailyQuestWidget` 추가하여 출석 보상 및 미션 상태 시각화.
+- [x] **학부모 화면 배너 공간 확보**: `/parent` (학습 리포트) 및 학습지 출력 페이지 하단에 `ParentAdBanner` 컴포넌트 삽입.
+- [x] **어뷰징 방지**: `storageManager.js`에서 날짜 문자열 기반으로 자정 초기화 검증 로직 구현.
 
 ## 🚀 [Phase 2] 클라우드 동기화 및 구독 모델 (대기)
 - [ ] **BaaS 기술 스택 확정**: Supabase vs Firebase 성능 및 가격 정책 비교 (PostgreSQL 기반의 Supabase 우선 검토).

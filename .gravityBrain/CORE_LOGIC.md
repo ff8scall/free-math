@@ -462,3 +462,46 @@ const merged = { ...initialData, ...sourceData };
 ### 9-5. [난도: 낮음] 의존성 충돌 및 빌드 안정화 (.npmrc)
 
 React 19 마이그레이션 과정에서 `@react-three/drei` 등 일부 라이브러리의 엄격한 peer dependency 요구사항으로 인해 Vercel 빌드 에러가 발생할 수 있다. 이를 위해 `.npmrc` 파일에 `legacy-peer-deps=true` 설정을 추가하여 빌드 시점의 의존성 해석 충돌을 방지한다. 이는 최신 라이브러리 도입과 레거시 환경 간의 가교 역할을 한다.
+
+---
+
+## 10. 데일리 퀘스트 엔진 (Daily Quest Engine)
+
+### 10-1. 설계 의도
+학습 행위를 일회성이 아닌 **습관(Habit)**으로 만들기 위한 리텐션 장치이다. 자정(Midnight)을 기준으로 초기화되는 퀘스트 세트를 통해 매일 새로운 성취감을 제공하고, 연속 출석(Streak) 시스템으로 매몰 비용(Sunk Cost)을 창출한다.
+
+### 10-2. 핵심 로직: 지연 초기화 (Lazy Reset)
+매번 데이터를 읽을 때마다 초기화 로직을 돌리는 대신, 앱의 진입점(`HomePage`) 마운트 시 단 한 번 `checkDailyReset()`을 호출하여 초기화 여부를 판단한다.
+
+```javascript
+checkDailyReset():
+  1. lastLoginDate (YYYY-MM-DD) 읽기
+  2. 현재 날짜(KST 기준)와 비교
+  3. 날짜가 다르면:
+     - Streak 계산: (오늘 - lastLoginDate) === 1일 이면 streak++
+     - dailyQuests 객체 초기화 (all false)
+     - lastLoginDate를 오늘로 갱신
+  4. 상태 저장 및 storage-update 이벤트 전송
+```
+
+### 10-3. 퀘스트 트리거 시스템
+퀘스트는 명시적으로 '완료 버튼'을 누르는 방식과 특정 행위 시 '자동 트리거'되는 방식이 혼합되어 있다.
+- **자동 트리거**: `feedPet()` 호출 시 `feedPet` 퀘스트 완료, `updateLastLearned()` 호출 시 `study` 퀘스트 완료.
+- **수동 트리거**: `attendance` 퀘스트는 메인 페이지 위젯에서 '받기' 버튼 클릭 시 확정.
+
+---
+
+## 11. 광고 수익화 전략 (Monetization Strategy)
+
+### 11-1. 설계 의도: 학부모 타겟팅 (Parental Targeting)
+아이들의 학습 경험(UX)을 해치지 않으면서 수익을 창출하기 위해 **"유료 전환의 주체인 학부모가 머무는 공간"**에만 제한적으로 광고를 노출한다.
+
+### 11-2. 광고 노출 영역 (Ad Surface)
+- `/parent`: 학습 데이터 리포트 하단
+- `/grade/*/worksheet`: 학습지 출력 설정 화면 하단 (출력물 자체에는 포함되지 않음)
+
+### 11-3. 기술적 구현: ParentAdBanner
+- **컴포넌트화**: `ParentAdBanner.jsx`로 모듈화하여 필요한 곳에 즉시 삽입 가능.
+- **프린트 방어**: CSS Media Query(`@media print { .noPrint { display: none; } }`)를 활용하여 학습지 출력 시에는 광고가 포함되지 않도록 보장한다.
+- **확장성**: 현재는 플레이스홀더 형태이나, Google AdSense 승인 후 `ins` 태그만 삽입하면 즉시 활성화된다.
+
