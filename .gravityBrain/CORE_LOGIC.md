@@ -458,3 +458,7 @@ const merged = { ...initialData, ...sourceData };
 이 간단한 한 줄이 스키마 진화를 가능하게 한다. 새 필드가 추가되면 `initialData`에 기본값을 정의하기만 하면, 구버전 저장소 데이터에는 자동으로 그 기본값이 채워진다. `...sourceData`가 뒤에 오므로 기존 필드는 사용자 데이터가 우선하고, 새 필드는 `initialData`의 기본값이 사용된다.
 
 **한계**: 필드 이름 변경이나 필드 삭제는 자동 처리되지 않는다. 예를 들어 `foodInventory.apple` → `foodInventory.snack` 변경은 명시적 마이그레이션 코드가 필요했다 (7-1절 참조). 향후 복잡한 마이그레이션이 필요해지면 버전 필드(`schemaVersion`)를 도입하여 단계적 마이그레이션을 구현하는 것을 권장한다.
+
+### 9-5. [난도: 낮음] 의존성 충돌 및 빌드 안정화 (.npmrc)
+
+React 19 마이그레이션 과정에서 `@react-three/drei` 등 일부 라이브러리의 엄격한 peer dependency 요구사항으로 인해 Vercel 빌드 에러가 발생할 수 있다. 이를 위해 `.npmrc` 파일에 `legacy-peer-deps=true` 설정을 추가하여 빌드 시점의 의존성 해석 충돌을 방지한다. 이는 최신 라이브러리 도입과 레거시 환경 간의 가교 역할을 한다.

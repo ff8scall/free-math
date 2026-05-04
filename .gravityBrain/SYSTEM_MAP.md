@@ -8,7 +8,7 @@
 ## 🛠️ 기술 스택
 | 구분 | 기술 |
 | :--- | :--- |
-| **Framework** | React 18 (Vite) |
+| **Framework** | React 19 (Vite 7) |
 | **Styling** | Vanilla CSS (CSS Modules) |
 | **Animation** | Framer Motion, canvas-confetti |
 | **Visuals** | Three.js (@react-three/fiber), Recharts |
