@@ -6,6 +6,10 @@
     - 60개 템플릿 구현 (덧셈/뺄셈 17, 곱셈/나눗셈 14, 시간/길이/무게 12, 분수/도형 8, 사고력/규칙/카드 8)
     - 자동 검증 스크립트 구현 (`validate-word-problems.js`) - 59개 템플릿 100% 통과
     - 기존 컴포넌트 호환성 유지 (WordProblemQuiz, WordProblemWorksheet)
+- **[2026-05-04]** **Vercel 빌드 에러 해결**:
+    - React 19와 `@react-three/drei` 간의 peer dependency 충돌 해결.
+    - `.npmrc`에 `legacy-peer-deps=true` 추가하여 빌드 안정성 확보.
+    - `package.json` 의존성 버전을 React 19.0.0으로 정렬.
 - **[2026-04-23]** **Phase 2 (고도화 및 게임화) 전 과정 완료**:
     - **2.1 (비주얼)**: AI 펫 튜터 힌트 시스템, 3D 입체도형 실험실(Three.js), 성취도 인증 카드 생성 기능 구현.
     - **2.2 (게임화)**: 마이룸 가구 배치 시스템, XP/레벨 성장 로직, 뱃지 컬렉션 및 상점 카테고리 확장.
