@@ -5,8 +5,9 @@ import Button from '../components/common/Button';
 import PageHeader from '../components/common/PageHeader';
 import styles from './Curriculum.module.css';
 
-const Curriculum = () => {
-    const { gradeId } = useParams();
+const Curriculum = ({ gradeId: propGradeId }) => {
+    const { gradeId: paramGradeId } = useParams();
+    const gradeId = propGradeId || paramGradeId;
 
     // Mock Data (나중에 파일로 분리 가능)
     const curriculumData = {

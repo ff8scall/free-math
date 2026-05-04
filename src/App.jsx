@@ -43,7 +43,6 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/grade-selection" element={<GradeSelection />} />
               <Route path="/selection" element={<GradeSelection />} />
-              <Route path="/grade/:gradeId" element={<Curriculum />} />
               
               {/* Feature Routes */}
               <Route path="/myroom" element={<MyRoom />} />
@@ -52,21 +51,27 @@ function App() {
               
               {/* Math Content Routes (Grouped by Grade) */}
               <Route path="/grade/1">
+                <Route index element={<Curriculum gradeId="1" />} />
                 {Grade1Routes}
               </Route>
               <Route path="/grade/2">
+                <Route index element={<Curriculum gradeId="2" />} />
                 {Grade2Routes}
               </Route>
               <Route path="/grade/3">
+                <Route index element={<Curriculum gradeId="3" />} />
                 {Grade3Routes}
               </Route>
               <Route path="/grade/4">
+                <Route index element={<Curriculum gradeId="4" />} />
                 {Grade4Routes}
               </Route>
               <Route path="/grade/5">
+                <Route index element={<Curriculum gradeId="5" />} />
                 {Grade5Routes}
               </Route>
               <Route path="/grade/6">
+                <Route index element={<Curriculum gradeId="6" />} />
                 {Grade6Routes}
               </Route>
 
